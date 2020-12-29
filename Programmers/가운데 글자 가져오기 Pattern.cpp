@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <string>
 
 using namespace std;
@@ -14,4 +14,4 @@ int main() {
     system("pause");
 }
 
-//substr(a,b) : aºÎÅÍ b°³¸¦ ¸®ÅÏ
+//substr(a,b) : aë¶€í„° bê°œë¥¼ ë¦¬í„´í•œë‹¤.
