@@ -1,4 +1,4 @@
-#include <vector>
+﻿#include <vector>
 #include <iostream>
 #include <algorithm>
 
@@ -23,4 +23,5 @@ int main() {
 	{
 		cout << test[i];
 	}
+	system("pause");
 }
