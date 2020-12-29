@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 using namespace std;
 
 long long solution(int a, int b) {
@@ -14,4 +14,5 @@ int main() {
 	int a, b;
 	cin >> a >> b;
 	cout << solution(a, b);
+	system("pause");
 }
