@@ -11,6 +11,7 @@ int main() {
     string input;
     cin >> input;
     cout << solution(input);
+    system("pause");
 }
 
-//substr(a,b) : a에서 b만큼의 문자열 리턴
+//substr(a,b) : a부터 b개를 리턴
