@@ -1,9 +1,9 @@
-#include iostream
+#include <iostream>
 using namespace std;
 int main() {
     char a; 
     int b;
-    cina;
+    cin >> a;
     b = int(a);
-    cout  b;
+    cout << b;
 }
