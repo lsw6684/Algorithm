@@ -6,4 +6,6 @@ int main() {
     cin >> a;
     b = int(a);
     cout << b;
+    
+    system("pause");
 }
