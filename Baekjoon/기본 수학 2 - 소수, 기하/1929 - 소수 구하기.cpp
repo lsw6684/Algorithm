@@ -16,8 +16,7 @@ int main()
     {
         if (check[i])        
             for (int j = i * 2; j <= n; j += i)
-                check[j] = 0;            
-        
+                check[j] = 0;                     
     }
     for (int i = m; i <= n; i++)
         if(check[i])    cout << i << endl;
