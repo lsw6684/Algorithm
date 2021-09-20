@@ -1,38 +1,42 @@
-#include<iostream>
-#include<vector>
-#include<string>
-
+#include <string>
+#include <vector>
+#include <iostream>
 using namespace std;
 
-vector<string> convert(const string& s, const int& n) {
-	vector<string> r;
-	for (int i = 0; i < s.length(); i += n)
-		r.push_back(s.substr(i, n));
-	return r;
+vector<string> convert(const string& s, const int& num)
+{
+    vector<string> r;
+    
+    for(int i = 0; i < s.length(); i+=num)
+        r.push_back(s.substr(i, num));
+    return r;
 }
 
 int solution(string s) {
-	vector<string> tmp;
-	string comp, one, str;
-	int cnt, mn=s.length();
-	for (int i = 1; i <= s.length() / 2; i++) {
-		tmp = convert(s, i);
-		one = tmp[0];
-		str = "";
-		cnt = 1;
-		for (int j = 1; j < tmp.size(); j++) {
-			if (tmp[j] == one)
-				cnt++;
-			else {
-				if (cnt != 1) str += to_string(cnt);
-				str += one;
-				one = tmp[j];
-				cnt = 1;
-			}
-		}
-		if (cnt != 1) str += to_string(cnt);
-		str += one;
-		mn = mn < str.length() ? mn : str.length();		
-	}
-	return mn;
+    int n, mn = s.length();
+    string cmp, str;
+    vector<string> tmp;
+    for(int i = 1; i <= s.length() / 2; i++)
+    {
+        tmp = convert(s, i);
+        n = 1;
+        cmp = tmp[0], str = "";
+        for(int j = 1; j < tmp.size(); j++)
+        {
+            if(cmp == tmp[j])
+                n++;
+            else {
+                if(n != 1)
+                    str += to_string(n);
+                str += cmp;
+                cmp = tmp[j];
+                n = 1;
+            }
+        }
+        if(n != 1)
+            str += to_string(n);
+        str += cmp;
+        mn = mn < str.length() ? mn : str.length();
+    }
+    return mn;
 }
