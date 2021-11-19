@@ -1,21 +1,18 @@
 import java.util.*;
 import java.io.*;
-public class Main {
+public class Main{
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuffer sb = new StringBuffer();
         String[] s = br.readLine().split(" ");
-        int a = Math.min(Integer.parseInt(s[0]), Integer.parseInt(s[1]));
-        int b = Math.max(Integer.parseInt(s[0]), Integer.parseInt(s[1]));
-        int res1 = a;
-        int res2 = 0;
-        while (res2 == 0) {
-            if (b % res1 == 0 && a % res1 == 0)
-                res2 = a / res1 * b;
-            else
-                res1--;
-        }
-        sb.append(res1 + "\n" + res2);
+        int a = Integer.parseInt(s[0]);
+        int b = Integer.parseInt(s[1]);
+        sb.append(Recur(a, b) + "\n" + a * b / Recur(a, b));
         System.out.println(sb);
+    }
+    public static int Recur (int a, int b) {
+        if(a % b == 0)
+            return b;
+        return Recur(b, a % b);
     }
 }
