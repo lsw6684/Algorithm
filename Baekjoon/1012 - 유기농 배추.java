@@ -1,4 +1,3 @@
-package tester;
 import java.util.*;
 import java.io.*;
 
@@ -57,7 +56,8 @@ public class Main {
 							if(dx < 0 || dy < 0 
 									|| dx >= width 
 									|| dy >= vertical
-									|| vis[dx][dy] == 1)
+									|| vis[dx][dy] == 1
+									|| board[dx][dy] == 0)
 								continue;
 							Q.add(new Pair(dx, dy));
 							vis[dx][dy] = 1;
