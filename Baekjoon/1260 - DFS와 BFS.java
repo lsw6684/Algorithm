@@ -1,62 +1,56 @@
-import java.io.*;
 import java.util.*;
+import java.io.*;
 
 public class Main {
-	static StringBuilder sb = new StringBuilder();
-	static int[][] tree;
+	static int[][] tree = new int[1002][1002] ;
 	static int[] vis;
-	static int N, M, V;
-	public static void main(String args[]) throws IOException {
+	static StringBuffer sb = new StringBuffer();
+	static int n, m, v;
+	public static void main (String[] args) throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
 		String[] s = br.readLine().split(" ");
 		
-		tree = new int[1002][1002];
-		
-		
-		N = Integer.parseInt(s[0]);
-		M = Integer.parseInt(s[1]);
-		V = Integer.parseInt(s[2]);
-		
-		vis = new int[N + 1];
-
-		for(int i = 0; i < M; i++)
+		n = Integer.parseInt(s[0]);
+		m = Integer.parseInt(s[1]);
+		v = Integer.parseInt(s[2]);
+		vis = new int [n + 1];
+		for(int i = 0; i < m; i++)
 		{
-			String[] tmp = br.readLine().split(" ");
-			int x = Integer.parseInt(tmp[0]);
-			int y = Integer.parseInt(tmp[1]);
-			
-			tree[x][y] = tree[y][x] = 1;
+			String[] xy = br.readLine().split(" ");
+			tree[Integer.parseInt(xy[0])][Integer.parseInt(xy[1])] = tree[Integer.parseInt(xy[1])][Integer.parseInt(xy[0])] = 1;
 		}
 		
-		DFS(V);
+		dfs(v);
 		sb.append("\n");
-		BFS(V);
+		bfs(v);
 		
-		System.out.print(sb);
+		System.out.println(sb);
+		
 	}
-	static public void DFS(int v) {
+	public static void dfs(int v) {
 		sb.append(v + " ");
 		vis[v] = 1;
-		for(int i = 1; i <= N; i++) {
-			if(vis[i] == 1 || tree[v][i] == 0)
-				continue;
-			DFS(i);
-		}
+		for(int i = 1; i <= n; i++)
+			if(vis[i] == 0 && tree[v][i] == 1)
+				dfs(i);
+		
 	}
-	static public void BFS(int v) {
+	public static void bfs(int v) {
 		Queue<Integer> Q = new LinkedList<>();
 		Q.add(v);
-		vis[v] = 0;
-		while(!Q.isEmpty())
-		{
+		while(!Q.isEmpty()) {
 			int cur = Q.poll();
+			vis[cur] = 0;
 			sb.append(cur + " ");
-			for(int i = 1; i <= N; i++ ) {
-				if(vis[i] != 1 || tree[cur][i] == 0)
+			for(int i = 1; i <= n; i++)
+			{
+				if(vis[i] == 0 || tree[cur][i] == 0)
 					continue;
-				vis[i] = 0;
 				Q.add(i);
+				vis[i] = 0;
 			}
 		}
+		
 	}
 }
