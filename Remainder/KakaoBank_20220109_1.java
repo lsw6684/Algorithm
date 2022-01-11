@@ -1,3 +1,24 @@
+class ctime implements Comparable<ctime> {
+    int start,end;
+	
+    ctime(int s,int e){
+        start = s;
+        end = e;
+    }
+
+
+    @Override
+    public int compareTo(ctime o) {
+        if(this.start < o.start||this.start == o.start&&this.end<o.end){
+            return -1;
+        }else {
+            return 1;
+        }
+    }
+}
+
+
+
 class Solution {
     public int solution(int[][] customer) {
 		int answer = 0;
