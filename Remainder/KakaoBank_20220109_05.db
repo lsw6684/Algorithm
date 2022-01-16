@@ -1,0 +1,11 @@
+SELECT SALE_YM AS 판매년월,
+	SUM(DECODE(GOODS_CD, '0001', SALE_CNT)) AS 상품0001판매개수, -- 디코드는 첫 번째 인자가
+	SUM(DECODE(GOODS_CD, '0002', SALE_CNT)) AS 상품0002판매개수, -- 두 번째 인자와 일치하면,
+	SUM(DECODE(GOODS_CD, '0003', SALE_CNT)) AS 상품0003판매개수, -- 세 번째 인자를 반환.
+	SUM(DECODE(GOODS_CD, '0004', SALE_CNT)) AS 상품0004판매개수, -- 튜플들을 그루핑한 상태로 합
+	SUM(DECODE(GOODS_CD, '0005', SALE_CNT)) AS 상품0005판매개수, 
+	SUM(SALE_CNT) AS 전체판매개수
+FROM KKB_GOODS_S
+GROUP BY SALE_YM
+ORDER BY SALE_YM		-- 오름차순으로 ORDER BY
+;
