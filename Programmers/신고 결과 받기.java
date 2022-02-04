@@ -14,18 +14,15 @@ class Solution {
         	String a = s.split(" ")[0];
         	String b = s.split(" ")[1];
         	
-        	if(!list.containsKey(a))
-        		list.put(a, new ArrayList<>());
+        	if(!list.containsKey(b))
+        		list.put(b, new ArrayList<>());
         	
-        	if(!list.get(a).contains(index.get(b)))
-        		list.get(a).add(index.get(b));	
+        	list.get(b).add(index.get(a));
+        	
+        	
         }
         
-        for(int i = 0; i < id_list.length; i++)
-        	if(list.containsKey(id_list[i]) && list.get(id_list[i]).size() >= k)
-        		for(int idx : list.get(id_list[i]))
-        			answer[idx]++;
-        	
+        
         return answer;
     }
 }
