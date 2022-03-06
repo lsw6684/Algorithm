@@ -1,3 +1,5 @@
+package tester;
+
 import java.util.*;
 import java.io.*;
 
@@ -25,7 +27,12 @@ class Solution {
 			permutation(tmp_arr, output, vis, 0, numbers.length(), i + 1);
 		}
 		
-		return set.size();
+		int answer = 0;
+		for(int i : set)
+			if(!prime_vis[i])
+				answer++;
+		
+		return answer;
 	}
 
 	static void prime(int v) {
@@ -36,8 +43,9 @@ class Solution {
 	}
 	static void permutation(int[] arr, int[] pre_output, boolean[] vis, int depth, int n, int r) {
     	if(depth == r)
-    		for(int i = 0; i < arr.length; i++)
-    			set.add(pre_output[i]);
+    		for(int i = 0; i < depth; i++)
+    			if(r == 1)
+    				set.add(pre_output[i]);
     	else
     		for(int i = 0; i < n; i++) {
     			if(!vis[i])
@@ -51,3 +59,16 @@ class Solution {
     		
     }
 }
+
+public class Main {
+	public static void main(String[] args) throws IOException {
+		Solution ss = new Solution();
+		
+		String s = "17";
+
+		System.out.println(ss.solution(s));
+
+	}
+}
+
+
