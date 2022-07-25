@@ -1,27 +1,26 @@
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		
+		int min = Integer.MIN_VALUE;
+		char answer = ' ';
 		int n = sc.nextInt();
-		int[] arr = new int[n];
-		int answer = Integer.MIN_VALUE;
-		int answer2 = 0;
-		String s = sc.next();	
 		
+		String s = sc.next();
 		
-		for(int i = 0; i < n; i++)
-			arr[s.charAt(i) - 65]++;
+		HashMap<Character, Integer> map = new HashMap<>();
 		
-		for(int i = 0; i < n; i++)
-			if(answer < arr[i])
+		for(char x : s.toCharArray())
+			map.put(x, map.getOrDefault(x, 0) + 1);
+		
+		for(char key : map.keySet()) 
+			if(map.get(key) > min)
 			{
-				answer = arr[i];
-				answer2 = i;
+				min = map.get(key);
+				answer = key;
 			}
-		
-		System.out.println((char)(answer2 + 65));
-		
+		System.out.println(answer);
 	}
 }
