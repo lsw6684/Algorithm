@@ -1,0 +1,66 @@
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.Scanner;
+import java.util.Stack;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int S = sc.nextInt();
+		int N = sc.nextInt();
+		int[] arr = new int[N];
+		
+		for(int i = 0; i < N; i++)
+			arr[i] = sc.nextInt();
+
+		Deque<Integer> dq = new LinkedList<>();
+		Stack<Integer> st = new Stack<>();
+
+		for (int i = 0; i < N; i++) {
+			int cnt = 0;
+			int flag = 0;
+			int first;
+			if(dq.size() == 0)
+				dq.addFirst(arr[i]);
+			else if (dq.size() < S) {
+				for (int x : dq)
+					if (x == arr[i]) {
+						flag = 1;
+						break;
+					} else
+						cnt++;
+				if (flag == 1) {
+					for (int j = 0; j < cnt; j++)
+						st.add(dq.pollFirst());
+					first = dq.pollFirst();
+					while(!st.isEmpty())
+						dq.addFirst(st.pop());
+					dq.addFirst(first);
+				}
+				else
+					dq.addFirst(arr[i]);
+			} else {
+				for (int x : dq)
+					if (x == arr[i]) {
+						flag = 1;
+						break;
+					} else
+						cnt++;
+				if(flag == 1) {
+					for (int j = 0; j < cnt; j++)
+						st.add(dq.pollFirst());
+					first = dq.pollFirst();
+					while(!st.isEmpty())
+						dq.addFirst(st.pop());
+					dq.addFirst(first);					
+				}
+				else {
+					dq.pollLast();
+					dq.addFirst(arr[i]);
+				}
+			}
+		}
+		for(int x : dq)
+			System.out.print(x + " ");
+	}
+}
