@@ -22,13 +22,10 @@ class Solution {
     		while(start > 0)
     		{
     			if(start % n >= 10)
-    			{
     				tmp += (char)(55 + start % n) + "";
-					start = start / n;
-    			} else {
+    			 else 
 					tmp += start % n;
-					start = start / n;
-    			}
+				start = start / n;
     		}
     		ret += new StringBuffer(tmp).reverse().toString();
     		preStart++;
