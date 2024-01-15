@@ -7,7 +7,8 @@ class Solution {
         // 해시 맵에 넣기
         for(String s: keymap) {
             for(int i = 0; i < s.length(); i++) {
-                // 람다식 때문(Java 8 이후는 사용 안 해도 됨)
+                // 람다식 때문, effectively final. 
+                // 람다식에서 참조하는 외부 지역 변수는 final 혹은 effectively final 이어야한다.
                 final int currentIndex = i; 
                 
                 char input = s.charAt(i);
